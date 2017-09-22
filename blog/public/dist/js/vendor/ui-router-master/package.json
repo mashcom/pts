@@ -1,0 +1,113 @@
+{
+  "name": "ui-router",
+  "description": "State-based routing for Javascript",
+  "version": "1.0.0-beta.1",
+  "scripts": {
+    "test": "npm run test:integrate",
+    "watch": "node_modules/watch/cli.js 'npm run test' src test",
+
+    "test:core": "karma start config/karma.core.js",
+    "debug:core": "karma start config/karma.core.js --singleRun=false --browsers=Chrome --autoWatch=true --autoWatchInterval=1",
+
+    "test:ng1": "karma start config/karma.ng15.js",
+    "debug:ng1": "karma start config/karma.ng15.js --singleRun=false --browsers=Chrome --autoWatch=true --autoWatchInterval=1",
+    "watch:ng1": "node_modules/watch/cli.js 'npm run test:ng1' src test",
+
+    "test:ng12": "karma start config/karma.ng12.js",
+    "test:ng13": "karma start config/karma.ng13.js",
+    "test:ng14": "karma start config/karma.ng14.js",
+    "test:ng15": "karma start config/karma.ng15.js",
+
+    "test:integrate": "tsc && npm run test:core && npm run test:ng12 && npm run test:ng13 && npm run test:ng14 && npm run test:ng15"
+  },
+  "homepage": "https://ui-router.github.io",
+  "contributors": [
+    {
+      "name": "Nate Abele",
+      "email": "nate@radify.io",
+      "web": "https://radify.io"
+    },
+    {
+      "name": "Chris Thielen",
+      "web": "https://github.com/christopherthielen"
+    },
+    {
+      "name": "Tim Kindberg",
+      "web": "https://github.com/timkindberg"
+    },
+    {
+      "name": "Karsten Sperling",
+      "web": "https://github.com/ksperling"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "UIRouter Team",
+      "web": "https://github.com/ui-router?tab=members"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular-ui/ui-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angular-ui/ui-router/issues"
+  },
+  "engines": {
+    "node": ">4"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@angular/common": "=2.0.0-rc.3",
+    "@angular/compiler": "=2.0.0-rc.3",
+    "@angular/core": "=2.0.0-rc.3",
+    "@angular/platform-browser": "=2.0.0-rc.3",
+    "@angular/platform-browser-dynamic": "=2.0.0-rc.3",
+    "babel-core": "^5.8.14",
+    "clone": "^1.0.2",
+    "conventional-changelog": "^1.1.0",
+    "conventional-changelog-cli": "^1.1.1",
+    "es6-module-loader": "^0.17.3",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.35.0",
+    "faithful-exec": "~0.1.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-conventional-changelog": "~1.1.0",
+    "grunt-karma": "~0.11.2",
+    "grunt-ngdocs": "~0.1.7",
+    "grunt-shell": "^1.1.2",
+    "grunt-ts": "^5.2.0",
+    "grunt-webpack": "^1.0.10",
+    "jasmine-core": "~2.3.4",
+    "jsdoc": "git://github.com/jsdoc3/jsdoc.git#v3.2.2",
+    "karma": "~0.12.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-script-launcher": "~0.1.0",
+    "karma-systemjs": "^0.7.2",
+    "load-grunt-tasks": "~0.4.0",
+    "lodash": "^4.5.1",
+    "parallelshell": "^2.0.0",
+    "phantomjs-polyfill": "0.0.1",
+    "reflect-metadata": "=0.1.2",
+    "remap-istanbul": "^0.6.3",
+    "rxjs": "=5.0.0-beta.6",
+    "shelljs": "~0.6.0",
+    "systemjs": "^0.18.4",
+    "ts-loader": "^0.8.1",
+    "tslint": "=2.5.0",
+    "typedoc": "git://github.com/christopherthielen/typedoc.git#v0.3-uirouter",
+    "typescript": "~1.8.0",
+    "watch": "^0.18.0",
+    "webpack": "1.x",
+    "webpack-dev-server": "1.x",
+    "yargs": "^4.2.0",
+    "zone.js": "=0.6.12"
+  }
+}
