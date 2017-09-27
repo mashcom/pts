@@ -10,15 +10,14 @@
 </section>
 <div class="container">
     <div class="col-md-12">
-        <div class="box">
+        <div class="boxfg">
             <div class="box-header">
-                <h1 class="box-title">Candidates</h1>
 
 
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
-                <table class="table">
+            <div class="box-body no-padding"><!--
+                <table class="table table-striped">
                     <tbody><tr>
                             <th>NAME</th>
                             <th>SEX</th>
@@ -37,13 +36,51 @@
                             <td>{{ $u->education }}</td>
                             <td>{{ $u->employment_type }}</td>
                             <td>{{ $u->email }}</td>
-                            <td><a href="<?php echo "admin/single/report/".$u->id ?>" class="btn btn-sm btn-primary">Report</a></td>
+                            <td><a href="<?php echo "admin/single/report/".$u->id ?>" class="btn btn-xs btn-primary">Report</a></td>
                         </tr>
 
                         @endforeach
 
 
-                    </tbody></table>
+                    </tbody></table>-->
+                    @foreach($users as $u)
+                    <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-orange" style="background: url('{{asset('dist/img/photfo4.jpg')}}') center center;">
+              <h3 class="widget-user-username">{{ $u->name }}</h3>
+              <h5 class="widget-user-desc">{{ $u->email }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <?php
+              $avatar_pic;
+              if(!empty($u->avatar)){
+               $avatar_pic= "http://localhost/laravel/blog/storage/app/".$u->avatar;
+            }
+            else{
+               $avatar_pic= asset('dist/img/fr-05.jpg');
+            }
+              ?>
+              <img class="img-circle" src=<?php echo $avatar_pic?> alt="User Avatar">
+              <br><br>
+            </div>
+            <div class="box-footer">
+              <div class="row">
+              
+                <!-- /.col -->
+                <div class="col-sm-12">
+                   <a href="<?php echo "admin/single/report/".$u->id ?>" class="btn btn-lg  btn-default text-bold btn-block">Report</a>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+         @endforeach
             </div>
             <!-- /.box-body -->
         </div>

@@ -27,9 +27,13 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::get('/init/test/{id}','TestController@initTest');
 	Route::resource('/score','ScoreController');
 	Route::resource('/user','UserController');
+	Route::post('/update/avatar','UserController@updateAvatar');
 	Route::resource('/timer','TimerController');
 	Route::get('/change/password',function(){
 		return view("auth.passwords.change");
+	});
+	Route::get('http://localhost/laravel/blog/storage/app/',function(){
+		return asset('dist/img/fr-05.jpg');
 	});
 	Route::post('/change/password', 'UserController@resetPassword');
 

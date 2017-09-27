@@ -10,7 +10,13 @@
 </section>
 
 <div class="col-lg-10 col-lg-offset-1">
-    <table class="table table-bordered">
+    <div class="box box-default">
+            <div class="box-header with-border">
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-striped">
         <tbody>
             <tr>
                 <th  class="col-lg-3">Name</th>
@@ -31,5 +37,9 @@
             @endforeach
 
         </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+  
 </div>
 @endsection

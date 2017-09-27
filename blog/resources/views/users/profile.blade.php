@@ -5,7 +5,52 @@
     <h1 class="text-center" style="font-size:40px">
         User Profile
       </h1>
-      
+      @if ($errors->has('avatar'))
+              <div class="callout callout-danger">
+                <h4>Ooops!</h4>
+
+                <p>{{ $errors->first('avatar') }}</p>
+              </div>
+        @endif
+        @if (session('success'))
+              <div class="callout callout-success">
+                <h4>Success!</h4>
+
+                <p>{{ session('success') }}</p>
+              </div>
+        @endif
+      <div class="modal fade in" id="avatar-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form method="post" action={{url('update/avatar')}} enctype="multipart/form-data">
+                 {{ csrf_field() }}
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Profile Photo</h4>
+              </div>
+              <div class="modal-body">
+                <center>
+                  <img  class="profile-user-img img-responsive img-circle" src=<?php echo "http://localhost/laravel/blog/storage/app/".$user->avatar ?> alt="User profile picture">
+                
+                <div class="form-group">
+                  <label for="exampleInputFile">Choose Photo</label>
+                  <input type="file" name="avatar">
+
+                  
+                </div>
+                </center>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 <div class="modal fade in" id="modal-default">
       <div class="modal-dialog">
             <div class="modal-content">
@@ -114,7 +159,9 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/fr-05.jpg')}}" alt="User profile picture">
+              <img data-toggle="modal" data-target="#avatar-default" class="profile-user-img img-responsive img-circle" src=<?php 
+              echo "http://localhost/laravel/blog/storage/app/".$user->avatar 
+              ?> alt="User profile picture">
 
               <h3 class="profile-username text-center">{{$user->name}}</h3>
 

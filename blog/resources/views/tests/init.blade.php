@@ -17,9 +17,10 @@
         </div>
         <!-- /.error-content -->
       </div>
+
 @endif 
 
-
+@if(sizeof($questions) >0)
 <div class="col-lg-8 col-lg-offset-2 form-group" ng-show=!timer_finished ng-cloak><br/><br/><br/><br/>
     <div class="error-page" >
         <h2 class="headline text-gray"> <i class="fa fa-balance-scale"></i></h2>
@@ -52,7 +53,7 @@
         <!-- /.error-content -->
       </div>
 </div>
-
+@endif
 <form class="modal fade in" id="edit-default">
   <input type="hidden" name="_token" id="edit_token" value="{{csrf_token()}}">
           <div class="modal-dialog">

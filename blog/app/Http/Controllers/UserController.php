@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use Auth;
+use Storage;
 
 class UserController extends Controller
 {
@@ -84,6 +85,27 @@ class UserController extends Controller
         //
     }
 
+    public function updateAvatar(Request $request)
+    {
+        $User = User::find(Auth::user()->id);
+        $this->validate($request, [
+            'avatar'=>"required|image"
+        ]);
+
+        //dd($request);
+
+        if ($request->file('avatar') != null) {
+            $file_name = "avatar_" . sha1(rand(1, 100000000000000000)) . sha1(rand(1, 100000000000000000)) . "." . $request->file('avatar')->getClientOriginalExtension();
+            Storage::put($file_name, file_get_contents($request->file('avatar')->getRealPath()));
+
+            $User->avatar = $file_name;
+            $User->save();
+            return redirect()->back()->with(["success"=>"Profile picture changeid successfully"]);
+        }
+
+        return redirect()->back()->withError(["avatar"=>"Profile picture changing failed, please try again"]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -96,7 +118,7 @@ class UserController extends Controller
 
         $User = User::find($id);
         $this->validate($request, [
-                    'name' => 'required|alpha|max:255',
+                    'name' => 'required|max:255',
                     'email' => 'required|email|max:255|unique:users,email,'.$User->id,
                     'sex' => 'required',
                     'dob' => 'required|date|before:01/01/2001',

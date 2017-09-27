@@ -44,6 +44,7 @@ class TestQuestionController extends Controller {
             'c' => 'required|max:250',
             'd' => 'required|max:250',
             'correct_answer' => 'required',
+            'illustration'=>"sometimes|mimes:jpeg,bmp,png"
         ]);
 
         $TestQuestion = new TestQuestion();
